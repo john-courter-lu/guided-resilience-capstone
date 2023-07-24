@@ -83,7 +83,7 @@ export const ClientMessageList = () => {
                                 </div>
 
                             </section>
-                        </>
+                            </>
                         )
                     }
 

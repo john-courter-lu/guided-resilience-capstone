@@ -1,31 +1,38 @@
 .messages {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
+.message__time {
+    font-size: x-small;
+    justify-content: center;
+
+    
+}
+
 .message {
     display: flex;
-    
-  
+
+
     color: white;
     padding: 0.25rem;
     margin: 0.25rem;
 }
 
-.message__sent{
+.message__sent {
     flex-direction: row-reverse;
 }
 
-.message__received{
+.message__received {
     flex-direction: row;
 }
 
 .message__header {
     font-size: xx-large;
     font-weight: 700;
-   
+
     padding: 0.5rem;
     margin: 0.25rem;
 }
@@ -36,4 +43,3 @@
     margin: 0.25rem;
     line-height: 2rem;
 }
-
