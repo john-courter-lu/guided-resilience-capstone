@@ -21,7 +21,7 @@ export const ClientMessageList = () => {
             })
     }, [])
 
-    const formatDataString = (dateString) => {
+    const formatDateString = (dateString) => {
 
         // Parse the date string to a Date object
         const date = new Date(dateString);
@@ -54,7 +54,7 @@ export const ClientMessageList = () => {
 
                     if (message.senderId === loggedinUserObject.id) {
                         return (<>
-                            <section className="message message__time">{formatDataString(message.time)}</section>
+                            <section className="message message__time">{formatDateString(message.time)}</section>
                             <section className="message message__sent" key={`message--${message.id}`}>
 
 
@@ -72,7 +72,7 @@ export const ClientMessageList = () => {
                     } else {
 
                         return (<>
-                            <section className="message message__time">{formatDataString(message.time)}</section>
+                            <section className="message message__time">{formatDateString(message.time)}</section>
                             <section className="message message__received" key={`message--${message.id}`}>
 
 
