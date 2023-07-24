@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import "./MessageList.css"
+
+const localLoggedinUser = localStorage.getItem("loggedin_user")
+const loggedinUserObject = JSON.parse(localLoggedinUser)
 
 export const ClientMessageList = () => {
 
 
     const [messages, setMessages] = useState([])
 
-    const localLoggedinUser = localStorage.getItem("loggedin_user")
-    const loggedinUserObject = JSON.parse(localLoggedinUser)
 
     useEffect(() => {
         fetch("http://localhost:8088/messages")
@@ -61,5 +63,70 @@ export const ClientMessageList = () => {
 }
 
 export const ClientCreateMessage = () => {
+    const navigate = useNavigate()
 
+
+    const [newMessage, updateNewMessage] = useState({
+        senderId: 0,
+        recipientId: 0,
+        content: "",
+        time: ""
+    })
+
+    const handleSaveButtonClick = (event) => {
+        event.preventDefault()
+
+        // TODO: Create the object to be saved to the API
+        const messageObjToSend = {
+            senderId:  Number(loggedinUserObject.id),
+            recipientId: 1,
+            content: newMessage.content,
+            time: new Date().toISOString()
+        };
+
+        fetch(`http://localhost:8088/messages`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(messageObjToSend)
+        })
+            .then(res => res.json())
+            .then(() => {
+                navigate("/messages")
+            })
+    }
+
+    return (
+        <>
+            <form className="newMessageForm">
+                <h2 className="newMessageForm__title">Create a new message</h2>
+                <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="content">What do you want to ask Pam today?</label>
+                        <input
+                            required autoFocus
+                            type="text"
+                            //className="form-control"
+                            placeholder="New Message"
+                        value={newMessage.content}
+                        onChange={(evt) => {
+                            const copy = { ...newMessage }
+                            copy.content = evt.target.value
+                            updateNewMessage(copy)
+                        }}
+                        />
+                    </div>
+                </fieldset>
+
+                <button
+                    className="btn btn-primary"
+                onClick={(evt) => {
+                    handleSaveButtonClick(evt)
+                }}
+                >
+                    Send
+                </button>
+
+            </form>
+        </>
+    )
 }
