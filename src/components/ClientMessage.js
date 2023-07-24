@@ -21,12 +21,40 @@ export const ClientMessageList = () => {
             })
     }, [])
 
+    const formatDataString = (dateString) => {
+
+        // Parse the date string to a Date object
+        const date = new Date(dateString);
+
+        // Define the options for the date and time formatting
+        const options = {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+        };
+
+        // Create a new DateTimeFormat object with the desired format
+        const dateTimeFormatter = new Intl.DateTimeFormat("en-US", options);
+
+        // Format the date using the DateTimeFormat object
+        const formattedDate = dateTimeFormatter.format(date);
+
+        return formattedDate;
+    }
+
     return (
         <article className="messages">
             {
                 messages.map(message => {
+
+
+
                     if (message.senderId === loggedinUserObject.id) {
-                        return (
+                        return (<>
+                            <section className="message message__time">{formatDataString(message.time)}</section>
                             <section className="message message__sent" key={`message--${message.id}`}>
 
 
@@ -38,11 +66,13 @@ export const ClientMessageList = () => {
                                 </div>
 
                             </section>
+                        </>
                         )
 
                     } else {
 
-                        return (
+                        return (<>
+                            <section className="message message__time">{formatDataString(message.time)}</section>
                             <section className="message message__received" key={`message--${message.id}`}>
 
 
@@ -53,10 +83,14 @@ export const ClientMessageList = () => {
                                 </div>
 
                             </section>
+                        </>
                         )
                     }
+
+
                 })
             }
+
         </article>
     )
 
@@ -78,7 +112,7 @@ export const ClientCreateMessage = () => {
 
         // TODO: Create the object to be saved to the API
         const messageObjToSend = {
-            senderId:  Number(loggedinUserObject.id),
+            senderId: Number(loggedinUserObject.id),
             recipientId: 1,
             content: newMessage.content,
             time: new Date().toISOString()
@@ -107,21 +141,21 @@ export const ClientCreateMessage = () => {
                             type="text"
                             //className="form-control"
                             placeholder="New Message"
-                        value={newMessage.content}
-                        onChange={(evt) => {
-                            const copy = { ...newMessage }
-                            copy.content = evt.target.value
-                            updateNewMessage(copy)
-                        }}
+                            value={newMessage.content}
+                            onChange={(evt) => {
+                                const copy = { ...newMessage }
+                                copy.content = evt.target.value
+                                updateNewMessage(copy)
+                            }}
                         />
                     </div>
                 </fieldset>
 
                 <button
                     className="btn btn-primary"
-                onClick={(evt) => {
-                    handleSaveButtonClick(evt)
-                }}
+                    onClick={(evt) => {
+                        handleSaveButtonClick(evt)
+                    }}
                 >
                     Send
                 </button>
