@@ -3,11 +3,12 @@ import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import "./MessageList.css"
 
-const localLoggedinUser = localStorage.getItem("loggedin_user")
-const loggedinUserObject = JSON.parse(localLoggedinUser)
+
 
 export const ClientMessageList = () => {
 
+    const localLoggedinUser = localStorage.getItem("loggedin_user")
+    const loggedinUserObject = JSON.parse(localLoggedinUser)
 
     const [messages, setMessages] = useState([])
 
@@ -83,7 +84,7 @@ export const ClientMessageList = () => {
                                 </div>
 
                             </section>
-                            </>
+                        </>
                         )
                     }
 
@@ -98,6 +99,9 @@ export const ClientMessageList = () => {
 
 export const ClientCreateMessage = () => {
     const navigate = useNavigate()
+
+    const localLoggedinUser = localStorage.getItem("loggedin_user")
+    const loggedinUserObject = JSON.parse(localLoggedinUser)
 
 
     const [newMessage, updateNewMessage] = useState({
