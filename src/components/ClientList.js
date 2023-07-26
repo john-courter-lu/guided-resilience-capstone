@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import "./ClientList.css"
 import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export const ClientList = () => {
 
@@ -79,7 +80,7 @@ export const ClientList = () => {
                     filteredClients.map(client => {
                         return (
                             <section className="client" key={`client--${client.id}`}>
-                                <div className="client__header">🧑{client.name}</div>
+                                <div className="client__header"><Link to={`/clients/${client.id}`}>🧑{client.name}</Link></div>
 
                                 <div>Date of Birth: {client.dateOfBirth}</div>
 
