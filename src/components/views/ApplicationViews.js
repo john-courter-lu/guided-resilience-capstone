@@ -1,6 +1,6 @@
 import { Route, Routes, Outlet } from "react-router-dom"
-import { ClientCreateMessage, ClientMessageList } from "../ClientMessage.js"
-import { TherapistMessageList } from "../TherapistMessage.js"
+import { ClientCreateMessage, ClientMessageList } from "../MessageClientView.js"
+import { TherapistMessageList } from "../MessageTherapistView.js"
 import { ClientList } from "../ClientList.js"
 
 export const ApplicationViews = () => {
