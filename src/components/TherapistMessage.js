@@ -121,7 +121,7 @@ export const TherapistMessageList = () => {
 }
 
 
-export const TherapistCreateMessage = ({ patientId }, { fetchSetAllMessages }) => {
+export const TherapistCreateMessage = ({ patientId, fetchSetAllMessages }) => {
     const navigate = useNavigate()
 
     const localLoggedinUser = localStorage.getItem("loggedin_user")
