@@ -9,7 +9,7 @@ export const ClientList = () => {
     const [clients, setClients] = useState([])
     const [filteredClients, setFilteredClients] = useState([])
     const [searchTerms, setSearchTerms] = useState("")
-    
+
 
 
     const localLoggedinUser = localStorage.getItem("loggedin_user")
@@ -41,10 +41,14 @@ export const ClientList = () => {
 
 
 
+
+
+
+
     if (searchTerms !== "") {
 
         return (<>
-
+            <ClientListSearchBar setSearchTerms={setSearchTerms}></ClientListSearchBar>
             <h2>Search Results</h2>
             <article className="clients">
                 {
@@ -67,9 +71,8 @@ export const ClientList = () => {
         return <>
 
 
-            {loggedinUserObject.staff ?
-                <button onClick={() => navigate("/clients/create")}>Add Clients</button> : ""
-            }
+
+            <ClientListSearchBar setSearchTerms={setSearchTerms}></ClientListSearchBar>
             <h2>List of Clients</h2>
             <article className="clients">
                 {
@@ -85,9 +88,42 @@ export const ClientList = () => {
                     })
                 }
             </article>
+
+            {loggedinUserObject.staff ?
+                <button onClick={() => navigate("/clients/create")}>Add Clients</button> : ""
+            }
         </>
     }
 
 
 
+
+
+
+
+
+}
+
+export const ClientListSearchBar = ({ setSearchTerms }) => {
+    return <>
+        <form className="searchForm">
+            <h2 className="searchForm__title"></h2>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="name"></label>
+                    <input
+                        required autoFocus
+                        type="text"
+                        className="form-control"
+                        placeholder="Search for a client"
+                        onChange={
+                            (changeEvent) => {
+                                setSearchTerms(changeEvent.target.value)
+                            }
+                        }
+                    />
+                </div>
+            </fieldset>
+        </form>
+    </>
 }

@@ -14,19 +14,26 @@ textarea {
   line-height: 1.5;
 }
 
-button{
-  font-size:16px;
+button {
+  font-size: 16px;
   font-weight: bold;
   color: rgb(184, 8, 184);
-  padding:0.5rem 1rem;
+  padding: 0.5rem 1rem;
+  margin: 1.5rem 1rem 0.5rem 0;
+
 }
 
 body {
-    padding: 0 3rem;
-    background-color: #404040;
+  padding: 0 3rem;
+  background-color: #404040;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Patua One", serif;
   letter-spacing: 2px;
 }
@@ -40,5 +47,5 @@ p {
 }
 
 a {
-  color: thistle; 
+  color: thistle;
 }
