@@ -1,6 +1,7 @@
 import { Route, Routes, Outlet } from "react-router-dom"
 import { ClientCreateMessage, ClientMessageList } from "../ClientMessage.js"
 import { TherapistMessageList } from "../TherapistMessage.js"
+import { ClientList } from "../ClientList.js"
 
 export const ApplicationViews = () => {
 
@@ -22,6 +23,7 @@ export const ApplicationViews = () => {
 				<Route path="/messages" element={<ClientMessageList />} />
 			}
 			<Route path="/create-message" element={<ClientCreateMessage />} />
+			<Route path="/clients" element={<ClientList />} />
 
 
 

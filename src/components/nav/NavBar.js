@@ -15,10 +15,16 @@ export const NavBar = () => {
             <li className="navbar__item ">
                 <Link className="navbar__link" to="/messages" >Messages</Link>
             </li>
+
             {!loggedinUserObject.staff ?
                 <li className="navbar__item ">
                     <Link className="navbar__link" to="/create-message" >Send New Messages</Link>
-                </li> : ""}
+                </li> :
+                <li className="navbar__item ">
+                    <Link className="navbar__link" to="/clients" >Clients</Link>
+                </li>
+            }
+
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="" onClick={() => {
                     localStorage.removeItem("loggedin_user")
