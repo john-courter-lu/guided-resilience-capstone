@@ -1,4 +1,4 @@
-.navbar {
+/* .navbar {
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
@@ -7,9 +7,47 @@
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
+    
 }
 
 .navbar__logout {
     margin-left: auto;
+} */
+
+
+/* New Rules below Header */
+.image-container {
+    overflow: hidden;
 }
 
+.image-container img {
+    display: block;
+    max-width: 100%;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: .5rem 3.75rem;
+    background-color: purple;
+}
+
+
+header .logo {
+    flex-grow: 1;
+    display: block;
+}
+
+nav li {
+    display: inline;
+    padding-right: 2rem;
+}
+
+nav li:last-child {
+    padding-right: 0;
+}
+
+nav li a {
+    text-decoration: none;
+    color: inherit;
+}
