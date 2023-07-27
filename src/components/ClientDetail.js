@@ -50,6 +50,7 @@ export const InfoDetail = () => {
 
     return (
         <section className="client" key={`client--${client.id}`}>
+            <h2>Client Info Details</h2>
             <div className="client__header">
                 {getGenderEmoji()}
                 {client.name}
@@ -71,7 +72,7 @@ export const InfoDetail = () => {
 }
 
 export const TreatmentDetail = () => {
-
+    return (<><h2>Treatment Details</h2></>)
 }
 export const TreatmentForm = () => {
 
