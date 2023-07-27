@@ -9,7 +9,7 @@
     font-size: x-small;
     justify-content: center;
 
-    
+
 }
 
 .message {
@@ -42,4 +42,12 @@
     padding: 1rem;
     margin: 0.25rem;
     line-height: 2rem;
+}
+
+.newMessageForm {
+    overflow: auto;
+}
+
+.newMessageForm button {
+    float: right;
 }

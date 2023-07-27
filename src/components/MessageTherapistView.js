@@ -157,15 +157,15 @@ export const TherapistCreateMessage = ({ patientId, fetchSetAllMessages }) => {
 
     return (
         <>
-            <form className="form-container">
+            <form className="newMessageForm">
 
                 <fieldset>
                     <div className="form-group">
 
-                        <input className="form-content"
+                        <input 
                             required autoFocus
                             type="text"
-                            //className="form-control"
+                            className="form-control"
                             placeholder="New Message"
                             value={newMessage.content}
                             onChange={(evt) => {

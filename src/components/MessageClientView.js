@@ -140,10 +140,10 @@ export const ClientCreateMessage = () => {
                 <fieldset>
                     <div className="form-group">
                         <label htmlFor="content">What do you want to ask Pam today?</label>
-                        <input
+                        <input className="form-content"
                             required autoFocus
                             type="text"
-                            //className="form-control"
+                           
                             placeholder="New Message"
                             value={newMessage.content}
                             onChange={(evt) => {
