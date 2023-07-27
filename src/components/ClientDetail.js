@@ -74,7 +74,7 @@ export const InfoDetail = () => {
 export const TreatmentDetail = () => {
 
     const { clientId } = useParams()
-    const [treatment, setTreatment] = useState({})
+    const [treatments, setTreatments] = useState([])
     const navigate = useNavigate()
 
     useEffect(
@@ -82,37 +82,51 @@ export const TreatmentDetail = () => {
             fetch(`http://localhost:8088/treatments/?patientId=${clientId}`)
                 .then(response => response.json())
                 .then((clientTreatmentsArray) => {
-                    const ongoingTreatmentObj=clientTreatmentsArray.filter(obj=>obj.isCompleted===false)[0]
-                    setTreatment(ongoingTreatmentObj)
+              
+                    setTreatments(clientTreatmentsArray)
 
                 })
         },
         [clientId]
     )
-    
- 
-
-    return (
-        <section className="treatment" key={`treatment--${treatment.id}`}>
-            <h2>Treatment Details</h2>
-            <div className="treatment__header">
-                {treatment.approachId}
-            </div>
-            <div>
-            Start Date: {treatment.startDate}
-            </div>
-            <div>
-               Status: On Going
-            </div>
-
-            <div><button
-                onClick={()=>{navigate(`treatments/update`)}}>
-                Update Treament Details</button></div>
 
 
-        </section>
+
+    return (<article className="treatments">
+        <h2>Treatment Details</h2>
+
+        {treatments.map(treatment => {
+
+            return <section className="treatment" key={`treatment--${treatment.id}`}>
+                <div className="treatment__header">
+                    {treatment.approachId}
+                </div>
+                <div>
+                    Start Date: {treatment.startDate}
+                </div>
+
+
+                {treatment.isCompleted === false ?
+                    <>
+                        <div>
+                            Status: On Going
+                        </div>
+                        <div><button
+                            onClick={() => { navigate(`treatments/update`) }}>
+                            Update Treament Details</button>
+                        </div>
+                    </>
+                    :
+                    <div>
+                        Status: Completed
+                    </div>}
+            </section>
+
+        })}
+
+    </article>
     )
-   
+
 }
 export const TreatmentForm = () => {
 
