@@ -103,11 +103,10 @@ export const ClientList = () => {
                         )
                     })
                 }
+                <button onClick={() => navigate("/clients/add")}>Add Clients</button>
             </article>
 
-            {loggedinUserObject.staff ?
-                <button onClick={() => navigate("/clients/add")}>Add Clients</button> : ""
-            }
+          
         </>
     }
 

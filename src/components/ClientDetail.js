@@ -48,9 +48,9 @@ export const InfoDetail = () => {
         return genderEmoji;
     };
 
-    return (
+    return (<article className="clients" >
+        <h2>Client Info Details</h2>
         <section className="client" key={`client--${client.id}`}>
-            <h2>Client Info Details</h2>
             <div className="client__header">
                 {getGenderEmoji()}
                 {client.name}
@@ -68,6 +68,7 @@ export const InfoDetail = () => {
 
 
         </section>
+    </article>
     )
 }
 
@@ -82,7 +83,7 @@ export const TreatmentDetail = () => {
             fetch(`http://localhost:8088/treatments/?patientId=${clientId}`)
                 .then(response => response.json())
                 .then((clientTreatmentsArray) => {
-              
+
                     setTreatments(clientTreatmentsArray)
 
                 })
