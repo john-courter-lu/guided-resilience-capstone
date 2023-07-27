@@ -31,13 +31,34 @@ export const InfoDetail = () => {
             })
     }
 
+    const getGenderEmoji = () => {
+        let genderEmoji;
+
+        if (client.genderId === 1) {
+            genderEmoji = "🧑";
+        } else if (client.genderId === 2) {
+            genderEmoji = "👩";
+        } else if (client.genderId === 3) {
+            genderEmoji = "🧚";
+        } else {
+            // Default emoji or content if genderId doesn't match any of the above values
+            genderEmoji = "🤷‍♂️";
+        }
+
+        return genderEmoji;
+    };
+
     return (
         <section className="client" key={`client--${client.id}`}>
             <div className="client__header">
-                {client.name} 
+                {getGenderEmoji()}
+                {client.name}
             </div>
-            <div> DOB:
-
+            <div>
+                DOB:
+            </div>
+            <div>
+                Address:
             </div>
 
             <div><button
