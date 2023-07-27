@@ -72,7 +72,47 @@ export const InfoDetail = () => {
 }
 
 export const TreatmentDetail = () => {
-    return (<><h2>Treatment Details</h2></>)
+
+    const { clientId } = useParams()
+    const [treatment, setTreatment] = useState({})
+    const navigate = useNavigate()
+
+    useEffect(
+        () => {
+            fetch(`http://localhost:8088/treatments/?patientId=${clientId}`)
+                .then(response => response.json())
+                .then((clientTreatmentsArray) => {
+                    const ongoingTreatmentObj=clientTreatmentsArray.filter(obj=>obj.isCompleted===false)[0]
+                    setTreatment(ongoingTreatmentObj)
+
+                })
+        },
+        [clientId]
+    )
+    
+ 
+
+    return (
+        <section className="treatment" key={`treatment--${treatment.id}`}>
+            <h2>Treatment Details</h2>
+            <div className="treatment__header">
+                {treatment.approachId}
+            </div>
+            <div>
+            Start Date: {treatment.startDate}
+            </div>
+            <div>
+               Status: On Going
+            </div>
+
+            <div><button
+                onClick={()=>{navigate(`treatments/update`)}}>
+                Update Treament Details</button></div>
+
+
+        </section>
+    )
+   
 }
 export const TreatmentForm = () => {
 
