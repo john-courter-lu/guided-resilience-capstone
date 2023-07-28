@@ -203,9 +203,9 @@ export const TreatmentForm = () => {
         //第二步 用POST 新建一个treatment
         const treamentObjToSend = {
             patientId: treatment.patientId,
-            conditionId: 0,
+            conditionId: newTreatment.conditionId,
             approachId: 0,
-            startDat: formatDate(new Date()),
+            startDate: formatDate(new Date()),
             endDate: "2099-12-31",
             isCompleted: false
         };
