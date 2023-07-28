@@ -80,7 +80,7 @@ export const TreatmentDetail = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/treatments/?patientId=${clientId}&_expand=condition&_expand=approach`)
+            fetch(`http://localhost:8088/treatments/?patientId=${clientId}&_expand=condition&_expand=approach&_sort=isCompleted&order=asc`)
                 .then(response => response.json())
                 .then((clientTreatmentsArray) => {
 
