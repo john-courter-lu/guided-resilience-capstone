@@ -113,7 +113,7 @@ export const TreatmentDetail = () => {
                             Status: On Going
                         </div>
                         <div><button
-                            onClick={() => { navigate(`treatments/update`) }}>
+                            onClick={() => { navigate(`/treatments/${treatment.id}/update`) }}>
                             Update Treament Details</button>
                         </div>
                     </>
