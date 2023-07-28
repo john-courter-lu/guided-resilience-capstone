@@ -80,7 +80,7 @@ export const TreatmentDetail = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/treatments/?patientId=${clientId}`)
+            fetch(`http://localhost:8088/treatments/?patientId=${clientId}&_expand=condition&_expand=approach`)
                 .then(response => response.json())
                 .then((clientTreatmentsArray) => {
 
@@ -100,7 +100,10 @@ export const TreatmentDetail = () => {
 
             return <section className="treatment" key={`treatment--${treatment.id}`}>
                 <div className="treatment__header">
-                    {treatment.approachId}
+                    {treatment?.approach?.name}
+                </div>
+                <div>
+                    Condition: {treatment?.condition?.name}
                 </div>
                 <div>
                     Start Date: {treatment.startDate}
@@ -118,9 +121,14 @@ export const TreatmentDetail = () => {
                         </div>
                     </>
                     :
+                    <>
+                    <div>
+                        End Date: {treatment.endDate}
+                    </div>
                     <div>
                         Status: Completed
-                    </div>}
+                    </div>
+                    </>}
             </section>
 
         })}
@@ -168,10 +176,20 @@ export const TreatmentForm = () => {
 
         event.preventDefault()
 
+        //准备工作: format a Date object in the "yyyy-mm-dd" format:
+
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+
+            return `${year}-${month}-${day}`;
+        }
+
         //第一步 用PUT 把这条mark as completed
         const markedCompletedTreatment = { ...treatment }
         markedCompletedTreatment.isCompleted = true;
-        markedCompletedTreatment.endDate = new Date();
+        markedCompletedTreatment.endDate = formatDate(new Date());
 
         fetch(`http://localhost:8088/treatments/${treatmentId}`, {
             method: "PUT",
@@ -183,39 +201,52 @@ export const TreatmentForm = () => {
             .then(response => response.json())
 
         //第二步 用POST 新建一个treatment
+        const treamentObjToSend = {
+            patientId: treatment.patientId,
+            conditionId: 0,
+            approachId: 0,
+            startDat: formatDate(new Date()),
+            endDate: "2099-12-31",
+            isCompleted: false
+        };
 
-        return fetch(`http://localhost:8088/treatments/${treatmentId}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(treatment)
+        fetch(`http://localhost:8088/treatments`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(treamentObjToSend)
         })
-            .then(response => response.json())
+            .then(res => res.json())
             .then(() => {
                 //setFeedback("successfully saved")
             })
             .then(() => {
                 navigate(`/clients/${treatment.patientId}`)
-
             })
+
     }
 
     return (
         <>
             <form className="treatment__form">
                 <h2 className="treatment__title">Update On-going Treament Details</h2>
-                <fieldset>
+                <fieldset >
                     <div className="form-group">
                         <label htmlFor="condition-select">Condition</label>
-                        <select id='condition-select'>
-                            <option value='option-0'>Choose a condition</option>
+                        <select id='condition-select'
+                            className="form-control"
+                            required autoFocus
+                            onChange={(evt) => {
+                                const copy = { ...newTreatment }
+                                copy.conditionId = evt.target.value
+                                setNewTreatment(copy)
+                            }}
+                        >
+                            <option value='0'>Please Choose</option>
                             {conditions.map(condition => {
-                                return <option key={condition.id} value={condition.name}>{condition.name}</option>
+                                return <option key={condition.id} value={condition.id}>{condition.name}</option>
                             })}
                         </select>
 
-                      
 
                     </div>
                 </fieldset>
@@ -225,6 +256,7 @@ export const TreatmentForm = () => {
                     Update
                 </button>
             </form>
+
         </>
 
     )
