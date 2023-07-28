@@ -131,6 +131,46 @@ export const TreatmentDetail = () => {
 }
 export const TreatmentForm = () => {
 
+    const { treatmentId } = useParams()
+    const [treatment, setTreatment] = useState({})
+    const [newTreatment, setNewTreatment] = useState({})
+    const navigate = useNavigate()
+
+    useEffect(
+        () => {
+            fetch(`http://localhost:8088/treatments/${treatmentId}`)
+                .then(response => response.json())
+                .then((singleObject) => {
+
+                    setTreatment(singleObject)
+
+                })
+        },
+        [treatmentId]
+    )
+
+    const handleSaveButtonClick = (event) => {
+
+        event.preventDefault()
+
+        //第一步 用PUT 把这条mark as completed
+        const markedCompletedTreatment = { ...treatment }
+        markedCompletedTreatment.isCompleted = true;
+        markedCompletedTreatment.endDate = new Date();
+
+        fetch(`http://localhost:8088/treatments/${treatmentId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(markedCompletedTreatment)
+        })
+            .then(response => response.json())
+
+        //第二步 用POST 新建一个treatment
+        
+    }
+
 }
 export const SessionNotes = () => {
 
