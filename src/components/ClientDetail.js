@@ -122,12 +122,12 @@ export const TreatmentDetail = () => {
                     </>
                     :
                     <>
-                    <div>
-                        End Date: {treatment.endDate}
-                    </div>
-                    <div>
-                        Status: Completed
-                    </div>
+                        <div>
+                            End Date: {treatment.endDate}
+                        </div>
+                        <div>
+                            Status: Completed
+                        </div>
                     </>}
             </section>
 
@@ -143,6 +143,7 @@ export const TreatmentForm = () => {
     const [treatment, setTreatment] = useState({})
     const [newTreatment, setNewTreatment] = useState({})
     const [conditions, setConditions] = useState([])
+    const [approaches, setApproaches] = useState([])
     const navigate = useNavigate()
 
     useEffect(
@@ -171,6 +172,18 @@ export const TreatmentForm = () => {
         []
     )
 
+    useEffect(
+        () => {
+            fetch(`http://localhost:8088/approaches`)
+                .then(response => response.json())
+                .then((dataArray) => {
+
+                    setApproaches(dataArray)
+
+                })
+        },
+        []
+    )
 
     const handleSaveButtonClick = (event) => {
 
@@ -204,7 +217,7 @@ export const TreatmentForm = () => {
         const treamentObjToSend = {
             patientId: treatment.patientId,
             conditionId: newTreatment.conditionId,
-            approachId: 0,
+            approachId: newTreatment.approachId,
             startDate: formatDate(new Date()),
             endDate: "2099-12-31",
             isCompleted: false
@@ -244,6 +257,22 @@ export const TreatmentForm = () => {
                             <option value='0'>Please Choose</option>
                             {conditions.map(condition => {
                                 return <option key={condition.id} value={condition.id}>{condition.name}</option>
+                            })}
+                        </select>
+
+                        <label htmlFor="approach-select">Approach</label>
+                        <select id='approach-select'
+                            className="form-control"
+
+                            onChange={(evt) => {
+                                const copy = { ...newTreatment }
+                                copy.approachId = evt.target.value
+                                setNewTreatment(copy)
+                            }}
+                        >
+                            <option value='0'>Please Choose</option>
+                            {approaches.map(approach => {
+                                return <option key={approach.id} value={approach.id}>{approach.name}</option>
                             })}
                         </select>
 
