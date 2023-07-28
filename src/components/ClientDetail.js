@@ -134,6 +134,7 @@ export const TreatmentForm = () => {
     const { treatmentId } = useParams()
     const [treatment, setTreatment] = useState({})
     const [newTreatment, setNewTreatment] = useState({})
+    const [conditions, setConditions] = useState([])
     const navigate = useNavigate()
 
     useEffect(
@@ -148,6 +149,20 @@ export const TreatmentForm = () => {
         },
         [treatmentId]
     )
+
+    useEffect(
+        () => {
+            fetch(`http://localhost:8088/conditions`)
+                .then(response => response.json())
+                .then((dataArray) => {
+
+                    setConditions(dataArray)
+
+                })
+        },
+        []
+    )
+
 
     const handleSaveButtonClick = (event) => {
 
@@ -168,8 +183,51 @@ export const TreatmentForm = () => {
             .then(response => response.json())
 
         //第二步 用POST 新建一个treatment
-        
+
+        return fetch(`http://localhost:8088/treatments/${treatmentId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(treatment)
+        })
+            .then(response => response.json())
+            .then(() => {
+                //setFeedback("successfully saved")
+            })
+            .then(() => {
+                navigate(`/clients/${treatment.patientId}`)
+
+            })
     }
+
+    return (
+        <>
+            <form className="treatment__form">
+                <h2 className="treatment__title">Update On-going Treament Details</h2>
+                <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="condition-select">Condition</label>
+                        <select id='condition-select'>
+                            <option value='option-0'>Choose a condition</option>
+                            {conditions.map(condition => {
+                                return <option key={condition.id} value={condition.name}>{condition.name}</option>
+                            })}
+                        </select>
+
+                      
+
+                    </div>
+                </fieldset>
+                <button
+                    onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+                    className="btn btn-primary">
+                    Update
+                </button>
+            </form>
+        </>
+
+    )
 
 }
 export const SessionNotes = () => {
