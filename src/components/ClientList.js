@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import "./ClientList.css"
+import "./Client.css"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 

@@ -259,7 +259,9 @@ export const TreatmentForm = () => {
                                 return <option key={condition.id} value={condition.id}>{condition.name}</option>
                             })}
                         </select>
-
+                    </div>
+                    
+                    <div className="form-group">
                         <label htmlFor="approach-select">Approach</label>
                         <select id='approach-select'
                             className="form-control"
