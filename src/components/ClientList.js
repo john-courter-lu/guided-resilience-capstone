@@ -71,7 +71,7 @@ export const ClientList = () => {
                     filteredClients.map(client => {
                         return (
                             <section className="client" key={`client--${client.id}`}>
-                                <div className="client__header">                {getGenderEmoji(client)}{client.name}</div>
+                                  <div className="client__header">{getGenderEmoji(client)} <Link to={`/clients/${client.id}`}>{client.name}</Link></div>
 
                                 <div>Date of Birth: {client.dateOfBirth}</div>
 
@@ -95,7 +95,7 @@ export const ClientList = () => {
                     filteredClients.map(client => {
                         return (
                             <section className="client" key={`client--${client.id}`}>
-                                <div className="client__header"><Link to={`/clients/${client.id}`}>{getGenderEmoji(client)}{client.name}</Link></div>
+                                <div className="client__header">{getGenderEmoji(client)} <Link to={`/clients/${client.id}`}>{client.name}</Link></div>
 
                                 <div>Date of Birth: {client.dateOfBirth}</div>
 
@@ -103,10 +103,10 @@ export const ClientList = () => {
                         )
                     })
                 }
-                <button onClick={() => navigate("/clients/add")}>Add Clients</button>
+                {/* <button onClick={() => navigate("/clients/add")}>Add Clients</button> */}
             </article>
 
-          
+
         </>
     }
 
