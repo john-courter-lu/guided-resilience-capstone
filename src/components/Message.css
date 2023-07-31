@@ -42,6 +42,8 @@
     padding: 1rem;
     margin: 0.25rem;
     line-height: 2rem;
+   
+    word-wrap: break-word;
 }
 
 .newMessageForm {
@@ -51,3 +53,50 @@
 .newMessageForm button {
     float: right;
 }
+
+
+/* therapist message view */
+.patient-message-create-container {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-around;
+}
+
+.list-create-container {
+    flex-basis: 85%;
+}
+
+.patient-message-create-container .patient {
+    flex-basis: 10%;
+}
+
+.patients ul {
+    margin: 0;
+    padding: 0
+}
+
+.patients li {
+    background-color: white;
+    list-style: none;
+    padding-inline-start: 0.05rem;
+    line-height: 1.2rem;
+    margin: 0.25rem 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border: white 1px solid;
+    border-radius: 5%;
+    font-size: 1.1rem;
+    color: rgb(184, 8, 184);
+    font-weight: 600;
+    cursor: pointer;
+    
+}
+
+.patients li.clicked {
+    background-color: lightgrey;
+
+}
+
+/* .newMessageForm .form-control{
+    max-width: 900px;
+} */

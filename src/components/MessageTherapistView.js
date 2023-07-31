@@ -74,49 +74,66 @@ export const TherapistMessageList = () => {
     }
 
     return (
-        <>
+        <main className="patient-message-create-container">
             <section className="patients">
-                Patients List
+
                 <ul>
-                    {patients.map(patient => { return <li key={`patient--${patient.id}`} onClick={() => { setPatientId(patient.userId) }}>{patient.name}</li> })}
+                    {patients.map(patient => {
+                        return <li key={`patient--${patient.id}`} onClick={() => {
+                            setPatientId(patient.userId);
+                            // for changing background color when clicked
+                            const listItems = document.querySelectorAll(".patients li");
+
+                            listItems.forEach(item => {
+                                item.addEventListener("click", function () {
+                                    // Remove "clicked" class from all <li> elements
+                                    listItems.forEach(li => li.classList.remove("clicked"));
+
+                                    // Add "clicked" class to the currently clicked <li> element
+                                    this.classList.add("clicked");
+                                });
+                            });
+
+                        }}>{patient.name}</li>
+                    })}
                 </ul>
             </section>
-
-            <article className="messages">
-                {
-                    filteredMessages.map(message => {
-                        if (message.senderId === 1) {
-                            return (<section key={`message--${message.id}`}>
-                                <section className="message message__time" >{formatDateString(message.time)}</section>
-                                <section className="message message__sent" >
-                                    <div className="message__header ">👩‍⚕️</div>
-                                    <div className="message__content">
-                                        {message.content}
-                                    </div>
+            <section className="list-create-container">
+                <article className="messages">
+                    {
+                        filteredMessages.map(message => {
+                            if (message.senderId === 1) {
+                                return (<section key={`message--${message.id}`}>
+                                    <section className="message message__time" >{formatDateString(message.time)}</section>
+                                    <section className="message message__sent" >
+                                        <div className="message__header ">👩‍⚕️</div>
+                                        <div className="message__content">
+                                            {message.content}
+                                        </div>
+                                    </section>
                                 </section>
-                            </section>
-                            )
+                                )
 
-                        } else {
-                            return (<section key={`message--${message.id}`}>
-                                <section className="message message__time">{formatDateString(message.time)}</section>
-                                <section className="message message__received" >
-                                    <div className="message__header ">🧑</div>
-                                    <div className="message__content">
-                                        {message.content}
-                                    </div>
+                            } else {
+                                return (<section key={`message--${message.id}`}>
+                                    <section className="message message__time">{formatDateString(message.time)}</section>
+                                    <section className="message message__received" >
+                                        <div className="message__header ">🧑</div>
+                                        <div className="message__content">
+                                            {message.content}
+                                        </div>
+                                    </section>
                                 </section>
-                            </section>
-                            )
-                        }
+                                )
+                            }
 
 
-                    })
-                }
+                        })
+                    }
 
-            </article>
-            <TherapistCreateMessage patientId={patientId} fetchSetAllMessages={fetchSetAllMessages}></TherapistCreateMessage>
-        </>
+                </article>
+                <TherapistCreateMessage patientId={patientId} fetchSetAllMessages={fetchSetAllMessages}></TherapistCreateMessage>
+            </section></main>
     )
 }
 
@@ -162,7 +179,7 @@ export const TherapistCreateMessage = ({ patientId, fetchSetAllMessages }) => {
                 <fieldset>
                     <div className="form-group">
 
-                        <input 
+                        <input
                             required autoFocus
                             type="text"
                             className="form-control"
