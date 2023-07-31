@@ -52,14 +52,13 @@ export const InfoDetail = () => {
         <h2>Client Info Details</h2>
         <section className="client" key={`client--${client.id}`}>
             <div className="client__header">
-                {getGenderEmoji()}
-                {client.name}
+                {getGenderEmoji()} {client.name}
             </div>
             <div>
-                DOB:
+                <strong>DOB:</strong> {client.dateOfBirth}
             </div>
             <div>
-                Address:
+                <strong>Address:</strong> {client.address}, {client.city}, {client.state}
             </div>
 
             <div><button
@@ -260,7 +259,7 @@ export const TreatmentForm = () => {
                             })}
                         </select>
                     </div>
-                    
+
                     <div className="form-group">
                         <label htmlFor="approach-select">Approach</label>
                         <select id='approach-select'
