@@ -97,22 +97,25 @@ export const TherapistMessageList = () => {
 
                 <ul>
                     {patients.map(patient => {
-                        return <li key={`patient--${patient.id}`} onClick={() => {
-                            setPatient(patient);
-                            // for changing background color when clicked
-                            const listItems = document.querySelectorAll(".patients li");
+                        return <li key={`patient--${patient.id}`}
+                            onClick={() => {
 
-                            listItems.forEach(item => {
-                                item.addEventListener("click", function () {
-                                    // Remove "clicked" class from all <li> elements
-                                    listItems.forEach(li => li.classList.remove("clicked"));
+                                setPatient(patient);
 
-                                    // Add "clicked" class to the currently clicked <li> element
-                                    this.classList.add("clicked");
+                                // for changing background color when clicked
+                                const listItems = document.querySelectorAll(".patients li");
+
+                                listItems.forEach(item => {
+                                    item.addEventListener("click", function () {
+                                        // Remove "clicked" class from all <li> elements
+                                        listItems.forEach(li => li.classList.remove("clicked"));
+
+                                        // Add "clicked" class to the currently clicked <li> element
+                                        this.classList.add("clicked");
+                                    });
                                 });
-                            });
 
-                        }}>{getGenderEmoji(patient.genderId)} {patient.name}</li>
+                            }}>{getGenderEmoji(patient.genderId)} {patient.name}</li>
                     })}
                 </ul>
             </section>
@@ -150,7 +153,8 @@ export const TherapistMessageList = () => {
                     }
 
                 </article>
-                <TherapistCreateMessage patient={patient} fetchSetAllMessages={fetchSetAllMessages}></TherapistCreateMessage>
+                {Object.keys(patient).length !== 0 ?
+                    <TherapistCreateMessage patient={patient} fetchSetAllMessages={fetchSetAllMessages}></TherapistCreateMessage> : ""}
             </section></main>
     )
 }
