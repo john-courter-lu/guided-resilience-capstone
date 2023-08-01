@@ -21,7 +21,7 @@ export const TherapistMessageList = () => {
 
     // initial state and filter message
     const [patients, setPatients] = useState([])
-    const [patientId, setPatientId] = useState(2)
+    const [patient, setPatient] = useState({})
     const [filteredMessages, setFilteredMessages] = useState([])
 
     useEffect(() => {
@@ -39,14 +39,14 @@ export const TherapistMessageList = () => {
     //filter messages   
 
     useEffect(() => {
-        const patientMessages = messages.filter(obj => obj.senderId === patientId || obj.recipientId === patientId)
+        const patientMessages = messages.filter(obj => obj.senderId === patient.userId || obj.recipientId === patient.userId)
         setFilteredMessages(patientMessages)
     }, [messages])
 
     useEffect(() => {
-        const patientMessages = messages.filter(obj => obj.senderId === patientId || obj.recipientId === patientId)
+        const patientMessages = messages.filter(obj => obj.senderId === patient.userId || obj.recipientId === patient.userId)
         setFilteredMessages(patientMessages)
-    }, [patientId])
+    }, [patient])
 
     // function 
     const formatDateString = (dateString) => {
@@ -98,7 +98,7 @@ export const TherapistMessageList = () => {
                 <ul>
                     {patients.map(patient => {
                         return <li key={`patient--${patient.id}`} onClick={() => {
-                            setPatientId(patient.userId);
+                            setPatient(patient);
                             // for changing background color when clicked
                             const listItems = document.querySelectorAll(".patients li");
 
@@ -136,7 +136,7 @@ export const TherapistMessageList = () => {
                                 return (<section key={`message--${message.id}`}>
                                     <section className="message message__time">{formatDateString(message.time)}</section>
                                     <section className="message message__received" >
-                                        <div className="message__header ">}</div>
+                                        <div className="message__header ">{getGenderEmoji(patient.genderId)}</div>
                                         <div className="message__content">
                                             {message.content}
                                         </div>
@@ -150,13 +150,13 @@ export const TherapistMessageList = () => {
                     }
 
                 </article>
-                <TherapistCreateMessage patientId={patientId} fetchSetAllMessages={fetchSetAllMessages}></TherapistCreateMessage>
+                <TherapistCreateMessage patient={patient} fetchSetAllMessages={fetchSetAllMessages}></TherapistCreateMessage>
             </section></main>
     )
 }
 
 
-export const TherapistCreateMessage = ({ patientId, fetchSetAllMessages }) => {
+export const TherapistCreateMessage = ({ patient, fetchSetAllMessages }) => {
     const navigate = useNavigate()
 
     const localLoggedinUser = localStorage.getItem("loggedin_user")
@@ -176,7 +176,7 @@ export const TherapistCreateMessage = ({ patientId, fetchSetAllMessages }) => {
         // TODO: Create the object to be saved to the API
         const messageObjToSend = {
             senderId: Number(loggedinUserObject.id),
-            recipientId: patientId,
+            recipientId: patient.userId,
             content: newMessage.content,
             time: new Date().toISOString()
         };
