@@ -54,9 +54,9 @@ export const ClientMessageList = () => {
 
 
                     if (message.senderId === loggedinUserObject.id) {
-                        return (<>
+                        return (<section key={`message--${message.id}`}>
                             <section className="message message__time">{formatDateString(message.time)}</section>
-                            <section className="message message__sent" key={`message--${message.id}`}>
+                            <section className="message message__sent" >
 
 
                                 <div className="message__header ">🧑</div>
@@ -67,14 +67,14 @@ export const ClientMessageList = () => {
                                 </div>
 
                             </section>
-                        </>
+                        </section>
                         )
 
                     } else {
 
-                        return (<>
+                        return (<section key={`message--${message.id}`}>
                             <section className="message message__time">{formatDateString(message.time)}</section>
-                            <section className="message message__received" key={`message--${message.id}`}>
+                            <section className="message message__received" >
 
 
                                 <div className="message__header ">👩‍⚕️</div>
@@ -84,7 +84,7 @@ export const ClientMessageList = () => {
                                 </div>
 
                             </section>
-                        </>
+                        </section>
                         )
                     }
 
@@ -143,7 +143,7 @@ export const ClientCreateMessage = () => {
                         <input className="form-content"
                             required autoFocus
                             type="text"
-                           
+
                             placeholder="New Message"
                             value={newMessage.content}
                             onChange={(evt) => {
