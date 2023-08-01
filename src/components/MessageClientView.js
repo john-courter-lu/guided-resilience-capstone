@@ -11,6 +11,7 @@ export const ClientMessageList = () => {
     const loggedinUserObject = JSON.parse(localLoggedinUser)
 
     const [messages, setMessages] = useState([])
+    const [patient, setPatient] = useState({})
 
 
     useEffect(() => {
@@ -19,6 +20,14 @@ export const ClientMessageList = () => {
             .then((messageArray) => {
                 const myMessages = messageArray.filter(obj => obj.senderId === loggedinUserObject.id || obj.recipientId === loggedinUserObject.id)
                 setMessages(myMessages)
+            })
+    }, [])
+
+    useEffect(() => {
+        fetch(`http://localhost:8088/patients?userId=${loggedinUserObject.id}`)
+            .then(response => response.json())
+            .then((dataArray) => {
+                setPatient(dataArray[0])
             })
     }, [])
 
@@ -46,6 +55,23 @@ export const ClientMessageList = () => {
         return formattedDate;
     }
 
+    const getGenderEmoji = (genderId) => {
+        let genderEmoji;
+
+        if (genderId === 1) {
+            genderEmoji = "🧑";
+        } else if (genderId === 2) {
+            genderEmoji = "👩";
+        } else if (genderId === 3) {
+            genderEmoji = "🧚";
+        } else {
+            // Default emoji or content if genderId doesn't match any of the above values
+            genderEmoji = "🤷‍♂️";
+        }
+
+        return genderEmoji;
+    };
+
     return (
         <article className="messages">
             {
@@ -59,7 +85,7 @@ export const ClientMessageList = () => {
                             <section className="message message__sent" >
 
 
-                                <div className="message__header ">🧑</div>
+                                <div className="message__header ">{getGenderEmoji(patient.genderId)}</div>
 
 
                                 <div className="message__content">
