@@ -73,6 +73,24 @@ export const TherapistMessageList = () => {
         return formattedDate;
     }
 
+    const getGenderEmoji = (genderId) => {
+        let genderEmoji;
+
+        if (genderId === 1) {
+            genderEmoji = "🧑";
+        } else if (genderId === 2) {
+            genderEmoji = "👩";
+        } else if (genderId === 3) {
+            genderEmoji = "🧚";
+        } else {
+            // Default emoji or content if genderId doesn't match any of the above values
+            genderEmoji = "🤷‍♂️";
+        }
+
+        return genderEmoji;
+    };
+
+
     return (
         <main className="patient-message-create-container">
             <section className="patients">
@@ -94,7 +112,7 @@ export const TherapistMessageList = () => {
                                 });
                             });
 
-                        }}>{patient.name}</li>
+                        }}>{getGenderEmoji(patient.genderId)} {patient.name}</li>
                     })}
                 </ul>
             </section>
@@ -118,7 +136,7 @@ export const TherapistMessageList = () => {
                                 return (<section key={`message--${message.id}`}>
                                     <section className="message message__time">{formatDateString(message.time)}</section>
                                     <section className="message message__received" >
-                                        <div className="message__header ">🧑</div>
+                                        <div className="message__header ">}</div>
                                         <div className="message__content">
                                             {message.content}
                                         </div>
