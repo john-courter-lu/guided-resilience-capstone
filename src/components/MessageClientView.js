@@ -166,9 +166,9 @@ export const ClientCreateMessage = () => {
                 <fieldset>
                     <div className="form-group">
                         <label htmlFor="content">What do you want to ask Pam today?</label>
-                        <input className="form-content"
+                        <textarea className="form-control"
                             required autoFocus
-                            type="text"
+                            rows="4" 
 
                             placeholder="New Message"
                             value={newMessage.content}
@@ -176,8 +176,8 @@ export const ClientCreateMessage = () => {
                                 const copy = { ...newMessage }
                                 copy.content = evt.target.value
                                 updateNewMessage(copy)
-                            }}
-                        />
+                            }}>
+                        </textarea>
                     </div>
                 </fieldset>
 
