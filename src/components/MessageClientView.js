@@ -89,7 +89,7 @@ export const ClientMessageList = () => {
 
 
                                 <div className="message__content">
-                                    {message.content}
+                                    <p dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br>') }} />
                                 </div>
 
                             </section>
@@ -106,7 +106,7 @@ export const ClientMessageList = () => {
                                 <div className="message__header ">👩‍⚕️</div>
 
                                 <div className="message__content">
-                                    {message.content}
+                                    <p dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br>') }} />
                                 </div>
 
                             </section>
@@ -168,7 +168,7 @@ export const ClientCreateMessage = () => {
                         <label htmlFor="content">What do you want to ask Pam today?</label>
                         <textarea className="form-control"
                             required autoFocus
-                            rows="4" 
+                            rows="4"
 
                             placeholder="New Message"
                             value={newMessage.content}

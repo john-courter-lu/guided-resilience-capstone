@@ -128,8 +128,9 @@ export const TherapistMessageList = () => {
                                     <section className="message message__time" >{formatDateString(message.time)}</section>
                                     <section className="message message__sent" >
                                         <div className="message__header ">👩‍⚕️</div>
+                                        {/* When rendering the text, replace "\n" characters with HTML line breaks (<br> tags): */}
                                         <div className="message__content">
-                                            {message.content}
+                                        <p dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br/>') }} />
                                         </div>
                                     </section>
                                 </section>
@@ -140,8 +141,9 @@ export const TherapistMessageList = () => {
                                     <section className="message message__time">{formatDateString(message.time)}</section>
                                     <section className="message message__received" >
                                         <div className="message__header ">{getGenderEmoji(patient.genderId)}</div>
+                                        {/* When rendering the text, replace "\n" characters with HTML line breaks (<br> tags): */}
                                         <div className="message__content">
-                                            {message.content}
+                                        <p dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br/>') }} />
                                         </div>
                                     </section>
                                 </section>
@@ -181,7 +183,10 @@ export const TherapistCreateMessage = ({ patient, fetchSetAllMessages }) => {
         const messageObjToSend = {
             senderId: Number(loggedinUserObject.id),
             recipientId: patient.userId,
+
+            // Replace line breaks with "\n" character before saving to the database
             content: newMessage.content,
+
             time: new Date().toISOString()
         };
 
@@ -201,9 +206,9 @@ export const TherapistCreateMessage = ({ patient, fetchSetAllMessages }) => {
                 <fieldset>
                     <div className="form-group">
 
-                        <input
+                        <textarea
                             required autoFocus
-                            type="text"
+                            
                             className="form-control"
                             placeholder="New Message"
                             value={newMessage.content}
@@ -227,7 +232,7 @@ export const TherapistCreateMessage = ({ patient, fetchSetAllMessages }) => {
                         const emptyMessage = { ...newMessage };
                         emptyMessage.content = '';
                         updateNewMessage(emptyMessage);
-                        
+
                     }}
                 >
                     Send
