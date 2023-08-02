@@ -23,6 +23,8 @@ export const TherapistMessageList = () => {
     const [patients, setPatients] = useState([])
     const [patient, setPatient] = useState({})
     const [filteredMessages, setFilteredMessages] = useState([])
+    // for hidden Delete button
+    const [showDelete, setShowDelete] = useState(false);
 
     useEffect(() => {
         //fetch all patients
@@ -90,6 +92,16 @@ export const TherapistMessageList = () => {
         return genderEmoji;
     };
 
+    // for hidden delete button and 
+    const handleContentClick = () => {
+        setShowDelete(!showDelete);
+    };
+
+    const handleDeleteButtonClick = (event) => {
+        // Handle delete button click event here
+        event.stopPropagation();
+        console.log('Delete button clicked!');
+    };
 
     return (
         <main className="patient-message-create-container">
@@ -129,9 +141,20 @@ export const TherapistMessageList = () => {
                                     <section className="message message__sent" >
                                         <div className="message__header ">👩‍⚕️</div>
                                         {/* When rendering the text, replace "\n" characters with HTML line breaks (<br> tags): */}
-                                        <div className="message__content">
-                                        <p dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br/>') }} />
+                                        <div className="message__content"
+                                            onClick={handleContentClick}>
+
+                                            <p dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br/>') }} />
+
                                         </div>
+
+                                        {showDelete && (
+                                            <div className="delete-button"
+                                                onClick={handleDeleteButtonClick}>
+
+                                                <button>  Delete </button>
+                                            </div>
+                                        )}
                                     </section>
                                 </section>
                                 )
@@ -143,7 +166,7 @@ export const TherapistMessageList = () => {
                                         <div className="message__header ">{getGenderEmoji(patient.genderId)}</div>
                                         {/* When rendering the text, replace "\n" characters with HTML line breaks (<br> tags): */}
                                         <div className="message__content">
-                                        <p dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br/>') }} />
+                                            <p dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br/>') }} />
                                         </div>
                                     </section>
                                 </section>
@@ -208,7 +231,7 @@ export const TherapistCreateMessage = ({ patient, fetchSetAllMessages }) => {
 
                         <textarea
                             required autoFocus
-                            
+
                             className="form-control"
                             placeholder="New Message"
                             value={newMessage.content}
