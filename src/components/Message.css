@@ -39,11 +39,21 @@
 
 .message__content {
     background-color: rebeccapurple;
-    padding: 1rem;
+    padding: 0.25rem 1rem;
     margin: 0.25rem;
-    line-height: 2rem;
-   
+    line-height: 1.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     word-wrap: break-word;
+  
+}
+
+.message__content p{
+    padding: 0;
+    margin:0
 }
 
 .newMessageForm {
@@ -84,12 +94,12 @@
     margin: 0.25rem 0.5rem;
     padding: 1.5rem 0.75rem;
     border: white 1px solid;
-    border-radius: 5%;
+    border-radius: 15px;
     font-size: 1.1rem;
     color: rgb(184, 8, 184);
     font-weight: 600;
     cursor: pointer;
-    
+
 }
 
 .patients li.clicked {
@@ -100,3 +110,13 @@
 /* .newMessageForm .form-control{
     max-width: 900px;
 } */
+
+/*delete button for messages*/
+.delete-button{
+    padding: 0.25rem 1rem;
+    margin: 0.25rem;
+}
+.delete-button button {
+    cursor: pointer;
+    margin: 0.25rem;
+}
