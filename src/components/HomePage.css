@@ -1,0 +1,82 @@
+body {
+    background-color: #0e0e0e;
+    color: white;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* Dark Mode */
+  body.dark-mode {
+    background-color: #0e0e0e;
+    color: white;
+  }
+
+  /* Link Colors */
+  a {
+    color: thistle;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Main Section Styling */
+  .main-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Header Styling */
+  .main-section header {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: thistle;
+  }
+
+  .main-section h1 {
+    color: purple;
+  }
+
+  .main-section h2 {
+    color: purple;
+  }
+
+  /* Contact Form Styling */
+  .main-section form {
+    margin-top: 20px;
+  }
+
+  .main-section label {
+    display: block;
+    margin-bottom: 5px;
+    color: purple;
+  }
+
+  input[type="text"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #222;
+    border: 1px solid rebeccapurple;
+    color: white;
+    resize: vertical;
+  }
+
+  input[type="submit"] {
+    background-color: rebeccapurple;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  /* Footer Styling */
+  footer {
+    font-size: x-small;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+  }

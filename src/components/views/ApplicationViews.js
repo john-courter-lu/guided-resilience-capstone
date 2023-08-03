@@ -3,6 +3,7 @@ import { ClientCreateMessage, ClientMessageList } from "../MessageClientView.js"
 import { TherapistMessageList } from "../MessageTherapistView.js"
 import { ClientList } from "../ClientList.js"
 import { InfoDetail, TreatmentDetail, TreatmentForm } from "../ClientDetail.js"
+import { HomePage } from "../HomePage.js"
 
 export const ApplicationViews = () => {
 
@@ -10,6 +11,7 @@ export const ApplicationViews = () => {
 	const loggedinUserObject = JSON.parse(localLoggedinUser)
 
 	return <Routes>
+		<Route path="/home" element={<HomePage />} />
 		<Route path="/" element={
 			<>
 				<h1>Guided Resilience</h1>
@@ -27,8 +29,6 @@ export const ApplicationViews = () => {
 			<Route path="clients" element={<ClientList />} />
 			<Route path="clients/:clientId" element={<><InfoDetail /><TreatmentDetail /></>} />
 			<Route path="treatments/:treatmentId/update" element={<TreatmentForm />} />
-
-
 
 		</Route>
 	</Routes>

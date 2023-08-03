@@ -12,10 +12,14 @@ export const NavBar = () => {
         <div className="image-container logo">
             <img src="https://content.codecademy.com/courses/freelance-1/unit-6/logo-sm.png" />
         </div>
-        
+
         <nav>
             <ul className="navbar">
 
+
+                <li className="navbar__item ">
+                    <Link className="navbar__link" to="/home" >Home</Link>
+                </li>
 
                 <li className="navbar__item ">
                     <Link className="navbar__link" to="/messages" >Messages</Link>
