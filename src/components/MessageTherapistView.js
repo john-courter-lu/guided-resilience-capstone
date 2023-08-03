@@ -258,7 +258,9 @@ export const TherapistCreateMessage = ({ patient, fetchSetAllMessages }) => {
 
                     }}
                 >
-                    Send
+                    <span className="icon">
+                        <ion-icon name="send" size="large"></ion-icon>
+                    </span>
                 </button>
 
             </form>

@@ -61,6 +61,7 @@
 }
 
 .newMessageForm button {
+    padding: 0.25rem 2rem;
     float: right;
 }
 
