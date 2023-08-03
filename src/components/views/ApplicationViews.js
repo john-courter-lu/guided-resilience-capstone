@@ -1,4 +1,4 @@
-import { Route, Routes, Outlet } from "react-router-dom"
+import { Route, Routes, Outlet, Navigate } from "react-router-dom"
 import { ClientCreateMessage, ClientMessageList } from "../MessageClientView.js"
 import { TherapistMessageList } from "../MessageTherapistView.js"
 import { ClientList } from "../ClientList.js"
@@ -11,6 +11,7 @@ export const ApplicationViews = () => {
 	const loggedinUserObject = JSON.parse(localLoggedinUser)
 
 	return <Routes>
+		<Route path="/" element={<Navigate to="/home" />} />
 		<Route path="/home" element={<HomePage />} />
 		<Route path="/" element={
 			<>
@@ -19,7 +20,7 @@ export const ApplicationViews = () => {
 
 				<Outlet />
 			</>
-		}>
+		} exact>
 
 			{loggedinUserObject.staff ?
 				<Route path="messages" element={<TherapistMessageList />} /> :
