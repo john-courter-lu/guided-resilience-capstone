@@ -30,11 +30,11 @@ fieldset {
 
     /* for a glassmorphism effect */
     /** Smooth transition to the bottom from a greyish to a less greyish color **/
-    background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    background-image: linear-gradient(to bottom right, rgba(133, 6, 95, 0.2), rgba(133, 6, 95, 0));
     /** A blur effect behind the form **/
     backdrop-filter: blur(20px);
     /** Thick box shadow with a greyish background on the right, bottom, with a blurred shadow **/
-    box-shadow: 10px 10px 10px rgba(30, 30, 30, 0.5);
+    box-shadow: 10px 10px 10px rgba(30, 30, 30, 0.8);
 
 
     margin: 5rem;
