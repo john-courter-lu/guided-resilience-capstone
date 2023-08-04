@@ -34,6 +34,9 @@ export const Login = () => {
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1>Guided Resilience</h1>
                     <h2>Please sign in</h2>
+                    <button className="icon-close">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
                         <input type="email"

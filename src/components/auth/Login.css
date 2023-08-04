@@ -1,4 +1,5 @@
-.h1, h1 {
+.h1,
+h1 {
     font-size: 2.5rem;
 }
 
@@ -14,22 +15,29 @@ fieldset {
     text-align: left;
     background-position-x: right;
     z-index: 1;
-    min-height: 25rem;
-    min-width: 45rem;
+    min-height: 30rem;
+    min-width: 20rem;
     background-color: hsla(0, 0%, 20%, 0.8);
     background-blend-mode: overlay;
     background-repeat: no-repeat;
+
+    /* for close button absolute position */
+    position: relative;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    /* 
+    background: transparent;
+    backdrop-filter: blur(20px); 
+    */
+
     margin: 5rem;
     padding: 2rem
 }
 
-.form--login > fieldset > input[type="email"] {
+.form--login>fieldset>input[type="email"] {
     width: 25em;
-}
-
-.label--login {
-    width: 8rem;
-    display: inline-block;
 }
 
 .form-control {
@@ -45,16 +53,47 @@ fieldset {
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+/* to center everything except the email label in the form */
 .container--login {
     text-align: center;
 }
 
+.form--login h1,
+.form--login h2 {
+    text-align: center;
+}
+
+.form--login button {
+    display: block;
+    margin: 2rem auto;
+}
+
+
+/* 
 .button--close {
     position: relative;
     bottom: -2rem;
-}
+} 
+*/
 
+.form--login .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0.5rem;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 2rem;
+
+    overflow: hidden;
+
+    border-bottom-left-radius: 20px;
+    border: 0;
+}
