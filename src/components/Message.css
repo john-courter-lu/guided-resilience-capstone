@@ -56,18 +56,35 @@
     margin: 0
 }
 
+/* for New Message box and send button */
 .newMessageForm {
-    overflow: auto;
+    overflow: visible; /*保证input box 不被截取*/
+}
+
+.newMessageForm .form-group {
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .newMessageForm button {
-    padding: 0.25rem 2rem;
-    float: right;
-    position: relative;
-    top: 0;
-    right: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: 0;
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    cursor: pointer;
 }
 
+.newMessageForm .form-control {
+    margin-left: auto;
+
+    max-width: 650px;
+    padding-right: 4rem;
+
+}
 
 /* therapist message view */
 .patient-message-create-container {
@@ -111,11 +128,7 @@
 
 }
 
-.newMessageForm .form-control {
-    margin-left: auto;
-    margin-right: 5rem;
-    max-width: 650px;
-}
+
 
 /*delete button for messages*/
 .delete-button {

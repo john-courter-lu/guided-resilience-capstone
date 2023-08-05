@@ -251,27 +251,27 @@ export const TherapistCreateMessage = ({ patient, fetchSetAllMessages }) => {
                                 updateNewMessage(copy)
                             }}
                         />
+                        <button className="form-btn btn btn-primary"
+                            onClick={(evt) => {
+                                handleSaveButtonClick(evt);
 
+                                //the input field's placeholder will reset to "New Message" since the state of newMessage.content will be an empty string after the function below is called.
+
+                                //resetInputField
+                                const emptyMessage = { ...newMessage };
+                                emptyMessage.content = '';
+                                updateNewMessage(emptyMessage);
+
+                            }}
+                        >
+                            <span className="icon">
+                                <ion-icon name="send" size="large"></ion-icon>
+                            </span>
+                        </button>
                     </div>
                 </fieldset>
 
-                <button className="form-btn btn btn-primary"
-                    onClick={(evt) => {
-                        handleSaveButtonClick(evt);
 
-                        //the input field's placeholder will reset to "New Message" since the state of newMessage.content will be an empty string after the function below is called.
-
-                        //resetInputField
-                        const emptyMessage = { ...newMessage };
-                        emptyMessage.content = '';
-                        updateNewMessage(emptyMessage);
-
-                    }}
-                >
-                    <span className="icon">
-                        <ion-icon name="send" size="large"></ion-icon>
-                    </span>
-                </button>
 
             </form>
         </>
