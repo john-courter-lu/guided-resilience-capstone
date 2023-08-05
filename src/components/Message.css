@@ -97,11 +97,11 @@
 }
 
 .list-create-container {
-    flex-basis: 85%;
+    flex-basis: 80%;
 }
 
 .patient-message-create-container .patient {
-    flex-basis: 10%;
+    flex-basis: 15%;
 }
 
 .patients ul {
@@ -115,10 +115,10 @@
     padding-inline-start: 0.05rem;
     line-height: 1.2rem;
     margin: 0.25rem 0.5rem;
-    padding: 1.5rem 0.75rem;
+    padding: 1rem 0.5rem;
     border: white 1px solid;
     border-radius: 15px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: rgb(184, 8, 184);
     font-weight: 600;
     cursor: pointer;
