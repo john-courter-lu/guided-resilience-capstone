@@ -48,12 +48,12 @@
     align-items: center;
 
     word-wrap: break-word;
-  
+
 }
 
-.message__content p{
+.message__content p {
     padding: 0;
-    margin:0
+    margin: 0
 }
 
 .newMessageForm {
@@ -63,6 +63,9 @@
 .newMessageForm button {
     padding: 0.25rem 2rem;
     float: right;
+    position: relative;
+    top: 0;
+    right: 0;
 }
 
 
@@ -108,15 +111,18 @@
 
 }
 
-/* .newMessageForm .form-control{
-    max-width: 900px;
-} */
+.newMessageForm .form-control {
+    margin-left: auto;
+    margin-right: 5rem;
+    max-width: 650px;
+}
 
 /*delete button for messages*/
-.delete-button{
+.delete-button {
     padding: 0.25rem 1rem;
     margin: 0.25rem;
 }
+
 .delete-button button {
     cursor: pointer;
     margin: 0.25rem;
