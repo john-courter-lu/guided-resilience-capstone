@@ -49,6 +49,7 @@
 
     word-wrap: break-word;
 
+    max-width: 75%;
 }
 
 .message__content p {
@@ -58,7 +59,8 @@
 
 /* for New Message box and send button */
 .newMessageForm {
-    overflow: visible; /*保证input box 不被截取*/
+    overflow: visible;
+    /*保证input box 不被截取*/
 }
 
 .newMessageForm .form-group {
