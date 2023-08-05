@@ -25,6 +25,7 @@ export const TherapistMessageList = () => {
     const [filteredMessages, setFilteredMessages] = useState([])
     // for hidden Delete button
     const [showDelete, setShowDelete] = useState(false);
+    const [deleteButtonIndex, setDeleteButtonIndex] = useState(0);
 
     useEffect(() => {
         //fetch all patients
@@ -93,8 +94,11 @@ export const TherapistMessageList = () => {
     };
 
     // for hidden delete button and 
-    const handleContentClick = () => {
+    const handleContentClick = (event) => {
         setShowDelete(!showDelete);
+        setDeleteButtonIndex(Number(event.target.getAttribute('data-value')))
+        console.log(event.target)
+        console.log(event.target.getAttribute('data-value'))
     };
 
     const handleDeleteButtonClick = (event) => {
@@ -147,13 +151,19 @@ export const TherapistMessageList = () => {
                                     <section className="message message__sent" >
                                         <div className="message__header ">👩‍⚕️</div>
 
-                                        {/* 修改showDelete的boolean值 */}
+                                        {/* 1 控制点击时要发生的事情 */}
 
-                                        {/* When rendering the text, replace "\n" characters with HTML line breaks (<br> tags): */}
-                                        <div className="message__content"
-                                            onClick={handleContentClick}>
+                                        {/* 2 When rendering the text, replace "\n" characters with HTML line breaks (<br> tags): */}
+                                        <div className="message__content" 
 
-                                            <p dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br/>') }} />
+                                            >
+
+                                            <p data-value={message.id} 
+                                            dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br/>') }}
+
+                                            onClick={handleContentClick}
+                                            
+                                            />
 
                                         </div>
 
