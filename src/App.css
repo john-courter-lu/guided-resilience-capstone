@@ -25,6 +25,8 @@ button {
 
 body {
   padding: 0 3rem;
+  max-width: 1024px;
+  margin: auto;
   /* background-color: #404040; */
 }
 

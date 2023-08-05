@@ -101,6 +101,12 @@ export const TherapistMessageList = () => {
         // Handle delete button click event here
         event.stopPropagation();
         console.log('Delete button clicked!');
+
+        fetch(`http://localhost:8088/messages/${Number(event.target.key)}`, {
+            method: "DELETE"
+        })
+            // .then(response => response.json()) <--- dont need it since we arent sending anything
+            .then()
     };
 
     return (
@@ -140,6 +146,9 @@ export const TherapistMessageList = () => {
                                     <section className="message message__time" >{formatDateString(message.time)}</section>
                                     <section className="message message__sent" >
                                         <div className="message__header ">👩‍⚕️</div>
+
+                                        {/* 修改showDelete的boolean值 */}
+
                                         {/* When rendering the text, replace "\n" characters with HTML line breaks (<br> tags): */}
                                         <div className="message__content"
                                             onClick={handleContentClick}>
@@ -150,6 +159,7 @@ export const TherapistMessageList = () => {
 
                                         {showDelete && (
                                             <div className="delete-button"
+                                                key={`${message.id}`}
                                                 onClick={handleDeleteButtonClick}>
 
                                                 <button>  Delete </button>
