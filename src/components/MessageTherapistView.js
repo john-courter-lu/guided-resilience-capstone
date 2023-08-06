@@ -51,7 +51,7 @@ export const TherapistMessageList = () => {
         setFilteredMessages(patientMessages)
     }, [patient])
 
-    // function 
+    // function for date format
     const formatDateString = (dateString) => {
 
         // Parse the date string to a Date object
@@ -102,14 +102,14 @@ export const TherapistMessageList = () => {
 
     const handleDeleteButtonClick = (event) => {
         // Handle delete button click event here
-        event.stopPropagation();
-        console.log('Delete button clicked!');
+        event.preventDefault();
+       
 
-        fetch(`http://localhost:8088/messages/${Number(event.target.key)}`, {
+        fetch(`http://localhost:8088/messages/${deleteButtonIndex}`, {
             method: "DELETE"
         })
             // .then(response => response.json()) <--- dont need it since we arent sending anything
-            .then()
+            .then(fetchSetAllMessages) //必须要做的, 否则不会自动刷新
     };
 
     return (
