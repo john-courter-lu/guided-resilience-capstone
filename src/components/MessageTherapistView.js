@@ -24,7 +24,7 @@ export const TherapistMessageList = () => {
     const [patient, setPatient] = useState({})
     const [filteredMessages, setFilteredMessages] = useState([])
     // for hidden Delete button
-    const [showDelete, setShowDelete] = useState(false);
+   
     const [deleteButtonIndex, setDeleteButtonIndex] = useState(0);
 
     useEffect(() => {
@@ -95,10 +95,9 @@ export const TherapistMessageList = () => {
 
     // for hidden delete button and 
     const handleContentClick = (event) => {
-        setShowDelete(!showDelete);
+    
         setDeleteButtonIndex(Number(event.target.getAttribute('data-value')))
-        console.log(event.target)
-        console.log(event.target.getAttribute('data-value'))
+  
     };
 
     const handleDeleteButtonClick = (event) => {
@@ -154,20 +153,20 @@ export const TherapistMessageList = () => {
                                         {/* 1 控制点击时要发生的事情 */}
 
                                         {/* 2 When rendering the text, replace "\n" characters with HTML line breaks (<br> tags): */}
-                                        <div className="message__content" 
+                                        <div className="message__content"
 
-                                            >
+                                        >
 
-                                            <p data-value={message.id} 
-                                            dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br/>') }}
+                                            <p data-value={message.id}
+                                                dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br/>') }}
 
-                                            onClick={handleContentClick}
-                                            
+                                                onClick={handleContentClick}
+
                                             />
 
                                         </div>
 
-                                        {showDelete && (
+                                        {deleteButtonIndex === message.id && (
                                             <div className="delete-button"
                                                 key={`${message.id}`}
                                                 onClick={handleDeleteButtonClick}>
