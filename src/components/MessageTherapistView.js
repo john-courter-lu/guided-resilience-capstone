@@ -24,7 +24,7 @@ export const TherapistMessageList = () => {
     const [patient, setPatient] = useState({})
     const [filteredMessages, setFilteredMessages] = useState([])
     // for hidden Delete button
-   
+    const [showDeleteButton, setShowDeleteButton] = useState(false);
     const [deleteButtonIndex, setDeleteButtonIndex] = useState(0);
 
     useEffect(() => {
@@ -95,15 +95,15 @@ export const TherapistMessageList = () => {
 
     // for hidden delete button and 
     const handleContentClick = (event) => {
-    
+        setShowDeleteButton(!showDeleteButton)
         setDeleteButtonIndex(Number(event.target.getAttribute('data-value')))
-  
+
     };
 
     const handleDeleteButtonClick = (event) => {
         // Handle delete button click event here
         event.preventDefault();
-       
+
 
         fetch(`http://localhost:8088/messages/${deleteButtonIndex}`, {
             method: "DELETE"
@@ -166,7 +166,7 @@ export const TherapistMessageList = () => {
 
                                         </div>
 
-                                        {deleteButtonIndex === message.id && (
+                                        {showDeleteButton && deleteButtonIndex === message.id && (
                                             <div className="delete-button"
                                                 key={`${message.id}`}
                                                 onClick={handleDeleteButtonClick}>
