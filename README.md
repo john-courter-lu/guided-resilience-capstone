@@ -4,7 +4,6 @@
 This application will solve the problem that there is a lack of patient management system and a lack of a way to share confidential messages and information between her and her patients before and after the sessions for a newly self-employed therapist Pam and her patients.
 
 ## OVERVIEW 
-[A general overview of the purpose of the application and the features it will have.]
 This application aims to provide a patient management system that ensures efficient treatment record keeping and secures communication between a newly self-employed therapist, Pam, and her patients. The project's Minimum Viable Product (MVP) features include user registration and login, patient message history visibility, creating and sending messages between the therapist and patients, directory view of patients, and the ability to edit patient treatment details. Additional features as stretch goals include a home page showcasing the therapist's credentials, sorting patient directory, message deletion with a hover button, therapist profile editing, and creating/editing patient session notes. 
 
 ## PROJECT MVP FEATURES
@@ -23,7 +22,6 @@ The app has a flexible layout for the UI
 The app has legible colors, margins, padding, and font sizes.
 
 ## PROJECT ADDITIONAL FEATURES
-[Stretch goals I would like to achieve after reaching MVP]
 A home page showcasing the therapist’s credentials for personal branding
 The therapist can SORT the directory of her patients with different orders
 The therapist can DELETE  a message with a button when he hovers over it 
@@ -34,9 +32,6 @@ The therapist can UPDATE  a patient’s treatment status as ongoing, completed a
 The patients can CREATE a new message within the same view of message list
 The patients can SEE their treatment plans
 The patients can UPDATE their profiles
-
-
-
 
 ## PROJECT ASSETS
 ### ERD
