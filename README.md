@@ -25,9 +25,9 @@ This application aims to provide a patient management system that ensures effici
 
 
 ## PROJECT ADDITIONAL FEATURES
-* A home page showcasing the therapist’s credentials for personal branding
+* The therapist can have a home page showcasing her credentials for personal branding and new clients acquisition
 * The therapist can SORT the directory of her patients with different orders
-* The therapist can DELETE  a message with a button when he hovers over it 
+* The therapist can DELETE  a message with a button when she hovers over it 
 * The therapist can EDIT/UPDATE her profile with a form
 * The therapist can CREATE & EDIT/UPDATE a patient’s session notes with a form
 * The therapist can CREATE & EDIT/UPDATE a patient’s session notes within the same view
@@ -39,9 +39,8 @@ This application aims to provide a patient management system that ensures effici
 
 ## PROJECT ASSETS
 ### ERD
-
 https://dbdiagram.io/d/64ba9f0102bd1c4a5e7bcba6
 
 ### Wireframes
-
 https://drive.google.com/file/d/1ONaeIXR7ndVPYgyHVNtlX_ajo0dHZ6Cu/view?usp=sharing
+
