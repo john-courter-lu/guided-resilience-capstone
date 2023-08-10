@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Getting Started with Guided Resilience App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## PROBLEM SOLVED
+This application will solve the problem that there is a lack of patient management system and a lack of a way to share confidential messages and information between her and her patients before and after the sessions for a newly self-employed therapist Pam and her patients.
 
-## Available Scripts
+## OVERVIEW 
+This application aims to provide a patient management system that ensures efficient treatment record keeping and secures communication between a newly self-employed therapist, Pam, and her patients. The project's Minimum Viable Product (MVP) features include user registration and login, patient message history visibility, creating and sending messages between the therapist and patients, directory view of patients, and the ability to edit patient treatment details. Additional features as stretch goals include a home page showcasing the therapist's credentials, sorting patient directory, message deletion with a hover button, therapist profile editing, and creating/editing patient session notes. 
 
-In the project directory, you can run:
+## PROJECT MVP FEATURES
+* The user can register and login with an email and a password
+* The patients can SEE their own message history with the therapist
+* The patients can CREATE a new message to send to the therapist with a form
+* The therapist can CREATE a new message to send to a patient with a form
+* The therapist can SEE her message history with all the patients
+* The therapist can SELECT the recipient of the message from a list of patients with a radio button group
+* The therapist can SEE  a directory of her patients 
+* The therapist can FIND a specific patient
+* The therapist can EDIT/UPDATE a patient’s treatment plan with a form, including a <select> element
+* The therapist can DELETE  a patient’s profile (Complete Therapy)
+* The therapist and the patients will have different views 
+* The app has a flexible layout for the UI
+* The app has legible colors, margins, padding, and font sizes.
 
-### `npm start`
+## PROJECT ADDITIONAL FEATURES
+* A home page showcasing the therapist’s credentials for personal branding
+* The therapist can SORT the directory of her patients with different orders
+* The therapist can DELETE  a message with a button when he hovers over it 
+* The therapist can EDIT/UPDATE her profile with a form
+* The therapist can CREATE & EDIT/UPDATE a patient’s session notes with a form
+* The therapist can CREATE & EDIT/UPDATE a patient’s session notes within the same view
+* The therapist can UPDATE a patient’s treatment status as ongoing, completed and suspended instead of complete or not completed
+* The patients can CREATE a new message within the same view of message list
+* The patients can SEE their treatment plans
+* The patients can UPDATE their profiles
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## PROJECT ASSETS
+### ERD
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+https://dbdiagram.io/d/64ba9f0102bd1c4a5e7bcba6
 
-### `npm test`
+### Wireframes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://drive.google.com/file/d/1ONaeIXR7ndVPYgyHVNtlX_ajo0dHZ6Cu/view?usp=sharing
