@@ -17,7 +17,7 @@ This application aims to provide a patient management system that ensures effici
 * The therapist can SELECT the recipient of the message from a list of patients with a radio button group
 * The therapist can SEE  a directory of her patients 
 * The therapist can FIND a specific patient
-* The therapist can EDIT/UPDATE a patient’s treatment plan with a form, including a <select> element
+* The therapist can EDIT/UPDATE a patient’s treatment plan with a form, including a select element
 * The therapist can DELETE  a patient’s profile (Complete Therapy)
 * The therapist and the patients will have different views 
 * The app has a flexible layout for the UI
