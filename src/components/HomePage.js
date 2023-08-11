@@ -1,8 +1,14 @@
 import React from 'react';
 import "./HomePage.css"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
+
+  const navigate = useNavigate()
+
+  const localLoggedinUser = localStorage.getItem("loggedin_user")
+  const loggedinUserObject = JSON.parse(localLoggedinUser)
+
   return (
     <div className="main-section">
 
@@ -35,9 +41,17 @@ export const HomePage = () => {
             <li className="navbar__item ">
               <Link className="navbar__link" to="" >Blog</Link>
             </li>
-            <li className="navbar__item ">
-              <Link className="navbar__link" to="/login" >Log in</Link>
-            </li>
+            {!localLoggedinUser ?
+              <li className="navbar__item ">
+                <Link className="navbar__link" to="/login" >Log in</Link>
+              </li> :
+              <li className="navbar__item navbar__logout">
+                <Link className="navbar__link" to="/home" onClick={() => {
+                  localStorage.removeItem("loggedin_user")
+                  navigate("/home", { replace: true })
+                }}>Logout</Link>
+              </li>
+            }
             <li className="navbar__item ">
               <Link className="navbar__link" to="/register" >Sign Up</Link>
             </li>
