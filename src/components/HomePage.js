@@ -1,16 +1,55 @@
 import React from 'react';
 import "./HomePage.css"
+import { Link } from 'react-router-dom';
 
 export const HomePage = () => {
   return (
     <div className="main-section">
+
       <header>
-        <h1>Pam Davis</h1>
-        <h2></h2>
+        <div className="image-container logo">
+          <img src="https://content.codecademy.com/courses/freelance-1/unit-6/logo-sm.png" />
+          <h1>Guided Resilience</h1>
+          <h2>Pam Davis</h2>
+
+        </div>
+
+
+        <nav>
+          <ul className="navbar">
+
+
+            <li className="navbar__item ">
+              <Link className="navbar__link" to="/home" >Home</Link>
+            </li>
+            <li className="navbar__item ">
+              <Link className="navbar__link" to="#about" >About</Link>
+            </li>
+            <li className="navbar__item ">
+              <Link className="navbar__link" to="#specialties" >Specialties</Link>
+            </li>
+            <li className="navbar__item ">
+              <Link className="navbar__link" to="" >Blog</Link>
+            </li>
+            <li className="navbar__item ">
+              <Link className="navbar__link" to="#contact" >Contact</Link>
+            </li>
+            <li className="navbar__item ">
+              <Link className="navbar__link" to="/login" >Log in</Link>
+            </li>
+            <li className="navbar__item ">
+              <Link className="navbar__link" to="/register" >Sign Up</Link>
+            </li>
+
+
+
+
+          </ul>
+        </nav>
       </header>
 
       <section>
-        <h2>About Me</h2>
+        <h2 id="about">About Me</h2>
         <p>
           Hello, I'm Pam Davis, a therapist with a passion for helping people in their healing journey. I believe in
           providing a safe and supportive environment for my clients to explore their emotions, thoughts, and

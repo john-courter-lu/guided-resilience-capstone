@@ -32,11 +32,12 @@ body {
   .main-section header {
     text-align: center;
     margin-bottom: 20px;
-    background-color: thistle;
+    background-color: purple;
   }
 
   .main-section h1 {
-    color: purple;
+    color: thistle;
+    display: inline-block;
   }
 
   .main-section h2 {
@@ -80,3 +81,9 @@ body {
     margin-top: 20px;
     color: white;
   }
+
+ /*  Nav Bar */
+ .main-section nav li {
+  display: inline;
+  padding-right: 1rem;
+}
