@@ -45,9 +45,14 @@ nav li {
 
 nav li:last-child {
     padding-right: 0;
+  
 }
 
 nav li a {
     text-decoration: none;
     color: inherit;
+}
+
+nav{
+    margin-left: auto;
 }

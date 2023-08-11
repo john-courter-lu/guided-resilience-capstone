@@ -35,11 +35,19 @@ a:hover {
   background-color: purple;
 }
 
+.logo-name-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .biz-name-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 1rem;
 }
 
 

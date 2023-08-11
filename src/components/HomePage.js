@@ -13,15 +13,17 @@ export const HomePage = () => {
     <div className="main-section">
 
       <header>
-        <div className="image-container logo">
-          <img src="https://content.codecademy.com/courses/freelance-1/unit-6/logo-sm.png" />
-        </div>
+        <div className='logo-name-section'>
+          <div className="image-container logo">
+            <img src="https://content.codecademy.com/courses/freelance-1/unit-6/logo-sm.png" />
+          </div>
 
-        <div className="biz-name-container">
-          <h1>Guided Resilience</h1>
-          <h2>Pam Davis</h2>
+          <div className="biz-name-container">
+            <h1>Guided Resilience</h1>
+            <h2>Pam Davis</h2>
+          </div>
         </div>
-
+        
         <nav>
           <ul className="navbar">
 
