@@ -35,9 +35,9 @@ export const NavBar = () => {
                 }
 
                 <li className="navbar__item navbar__logout">
-                    <Link className="navbar__link" to="" onClick={() => {
+                    <Link className="navbar__link" to="/home" onClick={() => {
                         localStorage.removeItem("loggedin_user")
-                        navigate("/", { replace: true })
+                        navigate("/home", { replace: true })
                     }}>Logout</Link>
                 </li>
 
