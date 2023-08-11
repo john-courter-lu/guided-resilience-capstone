@@ -28,7 +28,7 @@
 header {
     display: flex;
     align-items: center;
-    padding: .5rem 3.75rem;
+    padding: .5rem 1.75rem;
     background-color: purple;
 }
 

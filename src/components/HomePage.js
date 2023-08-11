@@ -9,11 +9,12 @@ export const HomePage = () => {
       <header>
         <div className="image-container logo">
           <img src="https://content.codecademy.com/courses/freelance-1/unit-6/logo-sm.png" />
-          <h1>Guided Resilience</h1>
-          <h2>Pam Davis</h2>
-
         </div>
 
+        <div className="biz-name-container">
+          <h1>Guided Resilience</h1>
+          <h2>Pam Davis</h2>
+        </div>
 
         <nav>
           <ul className="navbar">
@@ -29,10 +30,10 @@ export const HomePage = () => {
               <Link className="navbar__link" to="#specialties" >Specialties</Link>
             </li>
             <li className="navbar__item ">
-              <Link className="navbar__link" to="" >Blog</Link>
+              <Link className="navbar__link" to="#contact" >Contact</Link>
             </li>
             <li className="navbar__item ">
-              <Link className="navbar__link" to="#contact" >Contact</Link>
+              <Link className="navbar__link" to="" >Blog</Link>
             </li>
             <li className="navbar__item ">
               <Link className="navbar__link" to="/login" >Log in</Link>
