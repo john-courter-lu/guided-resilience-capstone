@@ -41,20 +41,23 @@ export const HomePage = () => {
             <li className="navbar__item ">
               <Link className="navbar__link" to="" >Blog</Link>
             </li>
-            {!localLoggedinUser ?
-              <li className="navbar__item ">
-                <Link className="navbar__link" to="/login" >Log in</Link>
-              </li> :
+            {localLoggedinUser ?
               <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="/home" onClick={() => {
                   localStorage.removeItem("loggedin_user")
                   navigate("/home", { replace: true })
                 }}>Logout</Link>
-              </li>
+              </li> :
+              <>
+                <li className="navbar__item ">
+                  <Link className="navbar__link" to="/login" >Log in</Link>
+                </li>
+                <li className="navbar__item ">
+                  <Link className="navbar__link" to="/register" >Sign Up</Link>
+                </li>
+              </>
             }
-            <li className="navbar__item ">
-              <Link className="navbar__link" to="/register" >Sign Up</Link>
-            </li>
+
 
 
 
