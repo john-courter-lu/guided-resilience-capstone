@@ -11,8 +11,6 @@ export const ApplicationViews = () => {
 	const loggedinUserObject = JSON.parse(localLoggedinUser)
 
 	return <Routes>
-		<Route path="/" element={<Navigate to="/home" />} />
-		<Route path="/home" element={<HomePage />} />
 		<Route path="/" element={
 			<>
 				<h1>Guided Resilience</h1>
